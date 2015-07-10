@@ -118,8 +118,8 @@ public class QueryListenerThread extends Thread {
 		response.write(event.getMotd());
 		response.write("SMP");
 		response.write(WORLD);
-		response.write(Bukkit.getOnlinePlayers().size());
-		response.write(event.getMaxPlayers());
+		response.write(Integer.toString(Bukkit.getOnlinePlayers().size()));
+		response.write(Integer.toString(event.getMaxPlayers()));
 		response.write((short) Bukkit.getPort());
 		response.write(Utils.getIP());
 		sendPacket(packet.getSocketAddress(), response.toByteArray());
