@@ -33,12 +33,12 @@ public class QueryDataPool {
 		return new LinkedHashMap<String, ValueFunc>(datapool);
 	}
 
-	public void append(QueryResponse response) throws IOException {
+	public void append(QueryResponse response, byte[] payload) throws IOException {
 		response.write("queryhandler");
 		response.write(datapool.size());
 		for (Entry<String, ValueFunc> entry : datapool.entrySet()) {
 			response.write(entry.getKey());
-			response.write(entry.getValue().get());
+			response.write(entry.getValue().get(payload));
 		}
 	}
 

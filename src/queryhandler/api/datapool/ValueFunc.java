@@ -2,6 +2,6 @@ package queryhandler.api.datapool;
 
 public interface ValueFunc {
 
-	public String get();
+	public String get(byte[] payload);
 
 }

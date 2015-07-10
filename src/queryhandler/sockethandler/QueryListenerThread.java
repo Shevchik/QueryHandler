@@ -8,6 +8,7 @@ import java.net.PortUnreachableException;
 import java.net.SocketAddress;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -76,8 +77,8 @@ public class QueryListenerThread extends Thread {
 				if (!isRequestValid(packet)) {
 					return;
 				}
-				if (16 == length) {
-					sendDataPoolInfo(packet);
+				if (length > 15) {
+					sendDataPoolInfo(packet, Arrays.copyOfRange(data, 15, length));
 					return;
 				}
 				QueryRequestEvent event = new QueryRequestEvent();
@@ -162,11 +163,11 @@ public class QueryListenerThread extends Thread {
 		sendPacket(packet.getSocketAddress(), response.toByteArray());
 	}
 
-	private void sendDataPoolInfo(DatagramPacket packet) throws IOException {
+	private void sendDataPoolInfo(DatagramPacket packet, byte[] payload) throws IOException {
 		QueryResponse response = new QueryResponse(1460);
 		response.write(0);
 		response.write(challenges.get(packet.getSocketAddress()).getIdentity());
-		QueryDataPool.getInstance().append(response);
+		QueryDataPool.getInstance().append(response, payload);
 	}
 
 	private void sendPacket(SocketAddress to, byte[] data) throws IOException {
