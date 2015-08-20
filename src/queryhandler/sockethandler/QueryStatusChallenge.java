@@ -15,9 +15,7 @@ public class QueryStatusChallenge {
 	private byte[] response;
 
 	public QueryStatusChallenge(DatagramPacket packet) {
-		byte[] data = packet.getData();
-        identity = new byte[4];
-        System.arraycopy(data, 3, identity, 0, identity.length);
+        System.arraycopy(packet.getData(), 3, identity, 0, identity.length);
 		response = String.format("\t%s%d\u0000", new String(this.identity), token).getBytes(StandardCharsets.UTF_8);
 	}
 
