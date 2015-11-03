@@ -1,0 +1,4 @@
+name:    QueryHandler
+main:    queryhandler.QueryHandler
+version: 1.0
+author:  _Shevchik_
