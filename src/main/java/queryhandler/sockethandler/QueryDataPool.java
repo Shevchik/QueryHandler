@@ -15,7 +15,7 @@ public class QueryDataPool {
 		return instance;
 	}
 
-	private final ConcurrentHashMap<String, ValueFunc> datapool = new ConcurrentHashMap<String, ValueFunc>();
+	private final ConcurrentHashMap<String, ValueFunc> datapool = new ConcurrentHashMap<>();
 
 	public boolean hasData(String key) {
 		return datapool.containsKey(key);
@@ -30,7 +30,7 @@ public class QueryDataPool {
 	}
 
 	public LinkedHashMap<String, ValueFunc> getDataPool() {
-		return new LinkedHashMap<String, ValueFunc>(datapool);
+		return new LinkedHashMap<>(datapool);
 	}
 
 	public void append(QueryResponse response, byte[] payload) throws IOException {

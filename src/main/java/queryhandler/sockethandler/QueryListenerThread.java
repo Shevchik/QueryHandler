@@ -23,7 +23,7 @@ public class QueryListenerThread extends Thread {
 	private static final String WORLD = Bukkit.getWorlds().get(0).getName();
 
 	private byte[] buffer = new byte[1460];
-	private HashMap<SocketAddress, QueryStatusChallenge> challenges = new HashMap<SocketAddress, QueryStatusChallenge>();
+	private HashMap<SocketAddress, QueryStatusChallenge> challenges = new HashMap<>();
 
 	private DatagramSocket socket;
 
