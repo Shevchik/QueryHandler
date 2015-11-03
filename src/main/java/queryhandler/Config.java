@@ -15,28 +15,28 @@ public class Config {
 		Config.plugin = plugin;
 	}
 
-	private static String queryaddr = "0.0.0.0";
-	private static int queryport = 25565;
-	private static String motd = Bukkit.getMotd();
-	private static int maxplayers = Bukkit.getMaxPlayers();
-	private static String version = Utils.getVersion();
-	private static boolean sendplugins = true;
+	private static String  queryAddress = "0.0.0.0";
+	private static int     queryPort    = 25565;
+	private static String  motd         = Bukkit.getMotd();
+	private static int     maxPlayers   = Bukkit.getMaxPlayers();
+	private static String  version      = Utils.getVersion();
+	private static boolean sendPlugins  = true;
 
 	public static void loadConfig() {
 		File configfile = new File(plugin.getDataFolder(), "config.yml");
 		YamlConfiguration config = YamlConfiguration.loadConfiguration(configfile);
-		queryaddr = config.getString("listener.address", queryaddr);
-		queryport = config.getInt("listener.port", queryport);
-		motd = config.getString("info.motd", motd);
-		maxplayers = config.getInt("info.maxplayers", maxplayers);
-		sendplugins = config.getBoolean("info.plugins", sendplugins);
-		version = config.getString("info.version", version);
-		config.set("listener.address", queryaddr);
-		config.set("listener.port", queryport);
-		config.set("info.motd", motd);
-		config.set("info.maxplayers", maxplayers);
-		config.set("info.plugins", sendplugins);
-		config.set("info.version", version);
+		queryAddress = config.getString ("listener.address", queryAddress);
+		queryPort    = config.getInt    ("listener.port",    queryPort);
+		motd         = config.getString ("info.motd",        motd);
+		maxPlayers   = config.getInt    ("info.maxplayers",  maxPlayers);
+		sendPlugins  = config.getBoolean("info.plugins",     sendPlugins);
+		version      = config.getString ("info.version",     version);
+		config.set("listener.address", queryAddress);
+		config.set("listener.port",    queryPort);
+		config.set("info.motd",        motd);
+		config.set("info.maxplayers",  maxPlayers);
+		config.set("info.plugins",     sendPlugins);
+		config.set("info.version",     version);
 		try {
 			config.save(configfile);
 		} catch (IOException e) {
@@ -44,11 +44,11 @@ public class Config {
 	}
 
 	public static String getQueryAddress() {
-		return queryaddr;
+		return queryAddress;
 	}
 
 	public static int getQueryPort() {
-		return queryport;
+		return queryPort;
 	}
 
 	public static final String getMotd() {
@@ -56,11 +56,11 @@ public class Config {
 	}
 
 	public static int getMaxPlayers() {
-		return maxplayers;
+		return maxPlayers;
 	}
 
 	public static boolean isSendingPluginsEnabled() {
-		return sendplugins;
+		return sendPlugins;
 	}
 
 	public static String getVersion() {

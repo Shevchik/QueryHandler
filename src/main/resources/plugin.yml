@@ -2,3 +2,11 @@ name:    QueryHandler
 main:    queryhandler.QueryHandler
 version: 1.0
 author:  _Shevchik_
+
+commands:
+  queryhandler:
+    description: QueryHandler commands
+
+permissions:
+  queryhandler.cmds:
+    default: op
