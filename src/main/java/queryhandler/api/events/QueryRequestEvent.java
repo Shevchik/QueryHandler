@@ -20,7 +20,7 @@ public class QueryRequestEvent extends Event {
 	public QueryRequestEvent() {
 		this.motd = Config.getMotd();
 		this.maxPlayers = Config.getMaxPlayers();
-		this.players = new ArrayList<String>();
+		this.players = new ArrayList<>();
 		this.version = Config.getVersion();
 		for (Player player : Bukkit.getOnlinePlayers()) {
 			players.add(player.getName());
